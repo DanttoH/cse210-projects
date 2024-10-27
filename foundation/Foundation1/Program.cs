@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 public class Comment
 {
-    public string CommenterName { get; set; }
-    public string CommentText { get; set; }
+    public string CommenterName { get; private set; }
+    public string CommentText { get; private set; }
 
     public Comment(string commenterName, string commentText)
     {
@@ -19,9 +19,9 @@ public class Comment
 
 public class Video
 {
-    public string Title { get; set; }
-    public string Author { get; set; }
-    public int LengthInSeconds { get; set; }
+    public string Title { get; private set; }
+    public string Author { get; private set; }
+    public int LengthInSeconds { get; private set; }
     private List<Comment> Comments { get; set; }
 
     public Video(string title, string author, int lengthInSeconds)
@@ -40,11 +40,6 @@ public class Video
     public int GetCommentCount()
     {
         return Comments.Count;
-    }
-
-    public List<Comment> GetComments()
-    {
-        return Comments;
     }
 
     public void DisplayVideoInfo()
@@ -66,24 +61,24 @@ class Program
     static void Main(string[] args)
     {
         // Create videos
-        Video video1 = new Video("Learn C# Basics", "John Doe", 600);
-        Video video2 = new Video("Advanced C# Programming", "Jane Smith", 1200);
-        Video video3 = new Video("C# OOP Concepts", "Alex Johnson", 800);
+        Video video1 = new Video("C# Tutorial for Beginners", "John Doe", 600);
+        Video video2 = new Video("Advanced C# Concepts", "Jane Smith", 1200);
+        Video video3 = new Video("C# and .NET Framework", "Alex Brown", 900);
 
         // Add comments to video1
-        video1.AddComment(new Comment("Alice", "Great video!"));
-        video1.AddComment(new Comment("Bob", "Very informative."));
-        video1.AddComment(new Comment("Charlie", "Helped me a lot, thanks!"));
+        video1.AddComment(new Comment("Alice", "This video is amazing!"));
+        video1.AddComment(new Comment("Bob", "Very helpful, thanks!"));
+        video1.AddComment(new Comment("Charlie", "I learned a lot from this."));
 
         // Add comments to video2
-        video2.AddComment(new Comment("David", "Loved the examples."));
-        video2.AddComment(new Comment("Eva", "Very well explained."));
-        video2.AddComment(new Comment("Frank", "I learned so much!"));
+        video2.AddComment(new Comment("Dave", "Great examples!"));
+        video2.AddComment(new Comment("Eve", "Can you make a video on LINQ?"));
+        video2.AddComment(new Comment("Frank", "Really insightful content."));
 
         // Add comments to video3
-        video3.AddComment(new Comment("George", "OOP made easy."));
-        video3.AddComment(new Comment("Hannah", "Thanks for this explanation."));
-        video3.AddComment(new Comment("Ian", "Concise and clear."));
+        video3.AddComment(new Comment("Grace", "Clear and concise explanation."));
+        video3.AddComment(new Comment("Heidi", "Thanks for the deep dive."));
+        video3.AddComment(new Comment("Ivan", "Loved the use of practical examples."));
 
         // Store videos in a list
         List<Video> videos = new List<Video> { video1, video2, video3 };
